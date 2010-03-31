@@ -1,5 +1,4 @@
-
-module ActiveQueue::Adapters::ResqueAdapter
+module ActiveQueue::Adapters::DummyAdapter
   
     #Background jobs can be any Ruby class or module that responds to perform. 
     #Your existing classes can easily be converted to background jobs or 
@@ -10,7 +9,7 @@ module ActiveQueue::Adapters::ResqueAdapter
     end
     module ClassMethods
       def enqueue(job_runner_klass, options = { })
-        Resque.enqueue(job_runner_klass, options)
+        true
       end
     end
 

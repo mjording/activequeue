@@ -1,1 +1,1 @@
-require "active_queue"
+require "activequeue"
