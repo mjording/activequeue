@@ -23,6 +23,8 @@ end
 With ActiveQueue you can send any job to the configured queue like so
 
 ActiveQueue::Queue.enqueue(Jobs::ExampleJob,'bar')
+or 
+ActiveQueue::Queue.enqueue(Jobs::MultiParamExampleJob,{:foo => 'bar',:foe => 'four', :fum => 'tail'})
 
 
  
