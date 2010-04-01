@@ -11,10 +11,10 @@ module ActiveQueue
   Dir[File.join(File.dirname(__FILE__), 'active_queue', '*','*.rb')].each{|f| require f }
   class Queue
     
-    if defined? Resque
-      include ActiveQueue::Adapters::ResqueAdapter
-    elsif defined? Delayed
+    if defined? Delayed
       include ActiveQueue::Adapters::DelayedJobAdapter
+    elsif defined? Resque
+      include ActiveQueue::Adapters::ResqueAdapter
     else
       include ActiveQueue::Adapters::DummyAdapter
     end

@@ -10,6 +10,7 @@ module ActiveQueue::Adapters::ResqueAdapter
     end
     module ClassMethods
       def enqueue(job_runner_klass, options = { })
+        @queue = :file_serve
         Resque.enqueue(job_runner_klass, options)
       end
     end
