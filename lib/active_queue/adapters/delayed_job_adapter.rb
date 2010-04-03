@@ -8,8 +8,12 @@ module ActiveQueue::Adapters::DelayedJobAdapter
       base.extend(ClassMethods)
     end
     module ClassMethods
+      def adapter_name
+        "delayed"
+      end
       def enqueue(job_runner_klass, options = { })
         Delayed::Job.enqueue(job_runner_klass.new(options))
       end
+      
     end
 end

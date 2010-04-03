@@ -1,3 +1,4 @@
+require 'resque'
 
 module ActiveQueue::Adapters::ResqueAdapter
   
@@ -9,10 +10,13 @@ module ActiveQueue::Adapters::ResqueAdapter
       base.extend(ClassMethods)
     end
     module ClassMethods
+      def adapter_name
+        "resque"
+      end
       def enqueue(job_runner_klass, options = { })
-        @queue = :file_serve
+        
         Resque.enqueue(job_runner_klass, options)
       end
+     
     end
-
 end

@@ -8,9 +8,12 @@ module ActiveQueue::Adapters::DummyAdapter
       base.extend(ClassMethods)
     end
     module ClassMethods
+      def adapter_name
+        "dummy"
+      end
       def enqueue(job_runner_klass, options = { })
         true
       end
+      
     end
-
 end
