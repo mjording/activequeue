@@ -1,5 +1,3 @@
-require 'resque'
-
 module ActiveQueue::Adapters::ResqueAdapter
   
     #Background jobs can be any Ruby class or module that responds to perform. 
