@@ -10,15 +10,19 @@ Overview
 ActiveQueue allows you to create jobs and place them on whatever queue you have set as a requirement in
 environment.rb. The first cut of this gem only supports DelayedJob and Resque. Background jobs can be any Ruby class or module that responds to perform. Your existing classes can easily be converted to background jobs or you can create new classes specifically to do work. Or, you can do both.
 
-I place job classes withina Jobs module in models/jobs.rb and like so:
 
-module Jobs
-  class ExampleJob < Struct.new(:foo)
-    def perform
-      # perform magically delicious task
-    end
+class EmailNotificationJob
+  attr_accessor :user_id
+  def initialize(options)
+    self.user_id = options[:user_id]
+  end
+  def perform
+    puts user_id
   end
 end
+emailNote = EmailNotificationJob.new({:user_id => 1})
+job = ActiveQueue::Job.new(emailNote, :adapter => "resque", :queue_name => :file_queue)
+
 
 With ActiveQueue you can send any job to the configured queue like so
 
