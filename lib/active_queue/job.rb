@@ -16,7 +16,7 @@ module ActiveQueue
     def enqueue
       @queue_adapter.enqueue(self.class, options)
     end
-    def self.perform(options = nil)
+    def perform(options = nil)
       success = true
       begin
         @value.perform(options)
@@ -24,9 +24,6 @@ module ActiveQueue
         success = e.message
       end
       success
-    end
-    def perform(options = nil)
-      self.perform(options)
     end
     def adapters
       { "resque" => ActiveQueue::Adapter::ResqueAdapter, 
