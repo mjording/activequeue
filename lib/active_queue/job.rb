@@ -30,7 +30,8 @@ module ActiveQueue
     end
     def adapters
       { "resque" => ActiveQueue::Adapter::ResqueAdapter, 
-       "delayed" => ActiveQueue::Adapter::DelayedJobAdapter }
+       "delayed" => ActiveQueue::Adapter::DelayedJobAdapter, 
+       "insta" => ActiveQueue::Adapter::DefaultAdapter }
     end
   end
   
