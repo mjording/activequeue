@@ -21,7 +21,7 @@ module ActiveQueue
       begin
         @value.perform(options)
       rescue Exception => e
-        success = false
+        success = e.message
       end
       success
     end
