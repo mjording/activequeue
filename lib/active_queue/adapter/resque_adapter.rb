@@ -3,7 +3,6 @@ unless defined? Resque
 end
 module ActiveQueue
   module Adapter
-    
     class ResqueAdapter
       def initialize(options = {})
         @options = options
