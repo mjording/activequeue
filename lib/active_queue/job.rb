@@ -26,7 +26,8 @@ module ActiveQueue
       end
     end
     def perform(opt = nil)
-      puts "lperf #{opt[:val].respond_to?('perform')}"
+      #puts "lperf #{opt[:val].respond_to?('perform')}"
+      opt ||= self.options
       ActiveQueue::Job.perform(opt)
     end
     def enqueue
